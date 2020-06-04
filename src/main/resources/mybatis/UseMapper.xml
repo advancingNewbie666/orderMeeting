@@ -112,7 +112,8 @@
     <include refid="Base_Column_List" />
     from use_info
     where use_date = #{useDate,jdbcType=DATE} and
-    ( (start_time &lt; #{startTime,jdbcType=TIME} and end_time &gt; #{startTime,jdbcType=TIME} ) or (start_time &lt; #{endTime,jdbcType=TIME} and end_time &gt; #{endTime,jdbcType=TIME} ) )
+    ( (start_time &lt; #{startTime,jdbcType=TIME} and end_time &gt; #{startTime,jdbcType=TIME} ) or (start_time &lt; #{endTime,jdbcType=TIME} and end_time &gt; #{endTime,jdbcType=TIME} )
+    or (start_time &gt; '10:30:00' and end_time &lt; '12:30:00' ))
   </select>
   <select id="selectByTimes" resultMap="BaseResultMap" >
     select
