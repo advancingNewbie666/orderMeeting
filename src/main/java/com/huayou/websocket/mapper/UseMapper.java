@@ -8,17 +8,9 @@ import java.util.List;
 
 @Repository
 public interface UseMapper {
-    int deleteByPrimaryKey(Integer id);
+
 
     int insert(Use record);
-
-    int insertSelective(Use record);
-
-    Use selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Use record);
-
-    int updateByPrimaryKey(Use record);
 
     List<Use> selectByRoomIdAndUseDate(@Param("roomId") String roomId,@Param("useDate") String useDate);
 

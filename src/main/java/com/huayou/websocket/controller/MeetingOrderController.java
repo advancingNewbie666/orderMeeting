@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RestController("meetingOrder")
 public class MeetingOrderController {
 
     @Autowired
@@ -35,8 +34,10 @@ public class MeetingOrderController {
         List<Use> useList = new ArrayList<>();
 
         if(useTime!=null&&!"".equals(useTime)){
+            //查询当天某会议室使用情况
             useList = useMapper.selectByRoomIdAndUseDate(roomId, useTime);
         }else if (beginDate!=null&&!"".equals(beginDate)&&endDate!=null&&!"".equals(endDate)){
+            //查询一段时间会议室使用情况
             useList = useMapper.selectByTimes(roomId, beginDate, endDate);
         }
 
@@ -54,9 +55,6 @@ public class MeetingOrderController {
             vo.setEndTime(strTime.format(use.getEndTime()));
             listVo.add(vo);
         }
-
-//        listVo.addAll(listVo);
-
         return listVo;
     }
 
